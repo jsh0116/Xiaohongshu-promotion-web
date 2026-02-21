@@ -1,4 +1,9 @@
 import { setRequestLocale } from "next-intl/server";
+import { HeroSection } from "@widgets/hero-section/HeroSection";
+import { PainSection } from "@widgets/pain-section/PainSection";
+import { FeaturesSection } from "@widgets/features-section/FeaturesSection";
+import { LeadFormSection } from "@widgets/lead-form-section/LeadFormSection";
+import { SocialProofToast } from "@features/social-proof-toast/SocialProofToast";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,8 +14,12 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-2xl font-semibold">Xiaohongshu</h1>
+    <main>
+      <HeroSection />
+      <PainSection />
+      <FeaturesSection />
+      <LeadFormSection />
+      <SocialProofToast />
     </main>
   );
 }

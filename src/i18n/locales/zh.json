@@ -1,5 +1,72 @@
 {
   "common": {
-    "siteName": "小红书"
+    "siteName": "小红书体验团",
+    "darkMode": "深色模式",
+    "lightMode": "浅色模式"
+  },
+  "header": {
+    "earlyBird": "预约即享免费试用券"
+  },
+  "hero": {
+    "mainLine1": "小红书推广，",
+    "mainLine2": "现在就是这么简单",
+    "subLine1": "企业、pr都能无语言障碍招募，",
+    "subLine2": "博主一键免费体验",
+    "cta": "立即预约并领取免费试用券",
+    "counterLabel": "人已提前预约"
+  },
+  "pain": {
+    "bizTitle": "企业及营销人员",
+    "bizText": "繁琐的微信沟通，手动做报告... 很烦恼吧？",
+    "bizSol": "无需中介直接招募，获取AI自动生成的数据分析报告",
+    "infTitle": "小红书博主(KOC/KOL)",
+    "infText": "想接推广却不知道渠道，粉丝不多而犹豫？",
+    "infSol": "只要有小红书账号就行！免费体验您感兴趣的推广活动",
+    "beforeLabel": "目前的困扰",
+    "afterLabel": "使用平台后"
+  },
+  "features": {
+    "title": "平台解决的问题",
+    "subtitle": "复杂的小红书营销，这样改变",
+    "feat1Title": "全民招募 & 全民参与",
+    "feat1Text": "从老板到专业机构自由注册，微型博主也欢迎！",
+    "feat2Title": "沟通无障碍",
+    "feat2Text": "不懂中文也没关系，提供实时翻译聊天和自动导购翻译",
+    "feat3Title": "数据驱动匹配 & 报告",
+    "feat3Text": "提供防跑路信用评级，自动生成广告主报告"
+  },
+  "form": {
+    "title": "现在预约，上线时赠送「高级招募券」(企业/pr) / 「优质博主勋章」(个人)",
+    "typeBiz": "我是企业/pr (我要招募)",
+    "typeInf": "我是小红书博主 (我要接单)",
+    "emailPlaceholder": "请输入您的电子邮箱",
+    "emailLabel": "电子邮箱",
+    "typeLabel": "用户类型",
+    "submit": "申请事前预约",
+    "submitting": "申请中...",
+    "success": "申请已完成",
+    "successSub": "开放时我们会第一时间通知您！",
+    "privacy": "无垃圾邮件，随时可取消订阅",
+    "emailError": "请输入有效的电子邮箱地址"
+  },
+  "survey": {
+    "title": "您最期待哪个功能？",
+    "opt1": "无语言障碍的自动翻译",
+    "opt2": "AI博主匹配",
+    "opt3": "自动绩效报告",
+    "opt4": "防跑路信用评级",
+    "submit": "提交",
+    "skip": "跳过",
+    "thanks": "谢谢！您的宝贵意见将被采纳"
+  },
+  "toast": {
+    "t1": "首尔营销人员김○○刚刚申请了",
+    "t2": "釜山品牌이○○刚刚申请了",
+    "t3": "博主박○○刚刚申请了"
+  },
+  "footer": {
+    "rights": "© 2026 小红书体验团. All rights reserved.",
+    "privacy": "隐私政策",
+    "description": "小红书营销，无语言障碍轻松开始。"
   }
 }

@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { cookies } from "next/headers";
 import { routing } from "@/i18n/routing";
+import { ThemeProvider } from "@shared/ui/ThemeProvider";
+import { Header } from "@widgets/header/Header";
+import { Footer } from "@widgets/footer/Footer";
+import { SITE_URL } from "@shared/constants";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -15,11 +20,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Xiaohongshu",
-  description: "Xiaohongshu landing page",
-};
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -29,17 +29,59 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "common" });
+
+  return {
+    title: {
+      default: t("siteName"),
+      template: `%s | ${t("siteName")}`,
+    },
+    description:
+      locale === "ko"
+        ? "샤오홍슈 마케팅 플랫폼 사전 예약"
+        : "小红书营销平台预约",
+    alternates: {
+      canonical: `${SITE_URL}/${locale}`,
+      languages: {
+        ko: `${SITE_URL}/ko`,
+        zh: `${SITE_URL}/zh`,
+        "x-default": `${SITE_URL}/ko`,
+      },
+    },
+    openGraph: {
+      title: t("siteName"),
+      description:
+        locale === "ko"
+          ? "언어 장벽 없이 시작하는 샤오홍슈 마케팅"
+          : "无语言障碍的小红书营销",
+      locale,
+      type: "website",
+    },
+  };
+}
+
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value;
+  const initialTheme = themeCookie === "dark" ? "dark" : "light";
 
   return (
-    <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang={locale} className={initialTheme === "dark" ? "dark" : ""}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white`}
+      >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider initialTheme={initialTheme}>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
