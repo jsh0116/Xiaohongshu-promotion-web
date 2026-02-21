@@ -13,24 +13,33 @@ export async function submitLead(
     return { ok: false, error: "Invalid email" };
   }
 
-  // Delegate actual storage to the API route to avoid bundling
-  // server-only packages (googleapis) in the client module graph
-  try {
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ??
-      `http://localhost:${process.env.PORT ?? 3000}`;
-    const res = await fetch(`${baseUrl}/api/lead`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, userType }),
-    });
-    if (!res.ok) {
-      const data = (await res.json()) as { error?: string };
-      return { ok: false, error: data.error ?? "Request failed" };
+  const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+  const sheetId = process.env.GOOGLE_SHEET_ID;
+
+  if (serviceEmail && privateKey && sheetId) {
+    try {
+      const { google } = await import(/* webpackIgnore: true */ "googleapis");
+      const auth = new google.auth.GoogleAuth({
+        credentials: {
+          client_email: serviceEmail,
+          private_key: privateKey.replace(/\\n/g, "\n"),
+        },
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+      });
+      const sheets = google.sheets({ version: "v4", auth });
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: sheetId,
+        range: "Sheet1!A:C",
+        valueInputOption: "RAW",
+        requestBody: {
+          values: [[new Date().toISOString(), email.trim(), userType]],
+        },
+      });
+    } catch (err) {
+      console.error("[submitLead] Sheets error:", err);
+      // Graceful fallback — treat as success so UX isn't broken
     }
-  } catch (err) {
-    console.error("[submitLead] fetch error:", err);
-    // Graceful fallback — treat as success so UX isn't broken
   }
 
   return { ok: true };

@@ -1,4 +1,19 @@
-// Root layout — html/body are provided by [locale]/layout.tsx
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return children;
+import dynamic from "next/dynamic";
+import type { PropsWithChildren } from "react";
+
+const GoogleAnalytics = dynamic(() =>
+  import("@next/third-parties/google").then((mod) => ({
+    default: mod.GoogleAnalytics,
+  })),
+);
+
+export default function RootLayout({ children }: PropsWithChildren<unknown>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+  return (
+    <>
+      {children}
+      {!!gaId && <GoogleAnalytics gaId={gaId} />}
+    </>
+  );
 }

@@ -1,16 +1,18 @@
 import { test, expect } from "@playwright/test";
+import ko from "../src/i18n/locales/ko.json";
+import zh from "../src/i18n/locales/zh.json";
 
 test.describe("Page load", () => {
   test("/ko — Korean headline renders", async ({ page }) => {
     await page.goto("/ko");
-    await expect(page.locator("h1")).toContainText(
-      "샤오홍슈 체험단, 이제 쉽고 간편하게 시작하세요."
-    );
+    await expect(page.locator("h1")).toContainText(ko.hero.mainLine1);
+    await expect(page.locator("h1")).toContainText(ko.hero.mainLine2);
   });
 
   test("/zh — Chinese headline renders", async ({ page }) => {
     await page.goto("/zh");
-    await expect(page.locator("h1")).toContainText("小红书推广，现在就是这么简单");
+    await expect(page.locator("h1")).toContainText(zh.hero.mainLine1);
+    await expect(page.locator("h1")).toContainText(zh.hero.mainLine2);
   });
 });
 
@@ -29,17 +31,13 @@ test.describe("Lead form", () => {
 
   test("empty email shows inline error", async ({ page }) => {
     await page.click('[data-testid="submit-btn"]');
-    await expect(
-      page.locator("text=올바른 이메일 주소를 입력해주세요")
-    ).toBeVisible();
+    await expect(page.locator(`text=${ko.form.emailError}`)).toBeVisible();
   });
 
   test("invalid email shows inline error", async ({ page }) => {
     await page.fill('[data-testid="email-input"]', "notanemail");
     await page.click('[data-testid="submit-btn"]');
-    await expect(
-      page.locator("text=올바른 이메일 주소를 입력해주세요")
-    ).toBeVisible();
+    await expect(page.locator(`text=${ko.form.emailError}`)).toBeVisible();
   });
 
   test("valid email submission shows success state", async ({ page }) => {
@@ -57,12 +55,10 @@ test.describe("Survey popup", () => {
     await page.fill('[data-testid="email-input"]', "test@example.com");
     await page.click('[data-testid="submit-btn"]');
 
-    // Wait for survey popup
     await expect(page.locator('[data-testid="survey-popup"]')).toBeVisible({
       timeout: 10_000,
     });
 
-    // Skip closes popup
     await page.click('[data-testid="survey-skip"]');
     await expect(
       page.locator('[data-testid="survey-popup"]')
@@ -82,7 +78,7 @@ test.describe("Survey popup", () => {
 
     await page.click('[data-testid="survey-opt1"]');
     await page.click('[data-testid="survey-submit"]');
-    await expect(page.locator("text=감사합니다")).toBeVisible();
+    await expect(page.locator(`text=${ko.survey.thanks}`)).toBeVisible();
   });
 });
 
@@ -108,14 +104,58 @@ test.describe("Locale switch", () => {
     await page.goto("/ko");
     await page.click('[data-testid="locale-zh"]');
     await expect(page).toHaveURL(/\/zh/);
-    await expect(page.locator("h1")).toContainText("小红书推广，现在就是这么简单");
+    await expect(page.locator("h1")).toContainText(zh.hero.mainLine1);
   });
 
   test("switching back to ko changes URL and content", async ({ page }) => {
     await page.goto("/zh");
     await page.click('[data-testid="locale-ko"]');
     await expect(page).toHaveURL(/\/ko/);
-    await expect(page.locator("h1")).toContainText("샤오홍슈 체험단");
+    await expect(page.locator("h1")).toContainText(ko.hero.mainLine1);
+  });
+});
+
+test.describe("Scroll reveal", () => {
+  test("pain-section is in viewport after scroll", async ({ page }) => {
+    await page.goto("/ko");
+    await page.locator('[data-testid="pain-section"]').scrollIntoViewIfNeeded();
+    await expect(page.locator('[data-testid="pain-section"]')).toBeInViewport();
+  });
+
+  test("features-section is in viewport after scroll", async ({ page }) => {
+    await page.goto("/ko");
+    await page
+      .locator('[data-testid="features-section"]')
+      .scrollIntoViewIfNeeded();
+    await expect(
+      page.locator('[data-testid="features-section"]')
+    ).toBeInViewport();
+  });
+
+  test("lead-form-section is in viewport after scroll", async ({ page }) => {
+    await page.goto("/ko");
+    await page
+      .locator('[data-testid="lead-form-section"]')
+      .scrollIntoViewIfNeeded();
+    await expect(
+      page.locator('[data-testid="lead-form-section"]')
+    ).toBeInViewport();
+  });
+
+  test("section cards are fully visible after animation completes", async ({
+    page,
+  }) => {
+    await page.goto("/ko");
+    await page.locator('[data-testid="pain-section"]').scrollIntoViewIfNeeded();
+    // ANIMATION_DURATION_S(0.6) + CARD_STAGGER_DELAY_S(0.12) + buffer
+    await page.waitForTimeout(900);
+    const cards = page.locator('[data-testid="pain-section"] .rounded-2xl');
+    for (const card of await cards.all()) {
+      const opacity = await card.evaluate(
+        (el) => parseFloat(getComputedStyle(el).opacity)
+      );
+      expect(opacity).toBeGreaterThan(0.9);
+    }
   });
 });
 

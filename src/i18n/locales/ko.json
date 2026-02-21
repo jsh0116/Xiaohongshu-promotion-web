@@ -33,7 +33,27 @@
     "feat2Title": "언어 장벽 ZERO",
     "feat2Text": "중국어 몰라도 됩니다. 실시간 번역 채팅과 자동 가이드 번역 제공.",
     "feat3Title": "데이터 기반 매칭 & 리포트",
-    "feat3Text": "먹튀 방지 신용 등급 제공 및 광고주 보고용 성과 리포트 자동 생성."
+    "feat3Text": "먹튀 방지 신용 등급 제공 및 광고주 보고용 성과 리포트 자동 생성.",
+    "mockupCampaignTabs": ["캠페인", "인플루언서", "분석"],
+    "mockupCampaignUpload": "캠페인 올리기",
+    "mockupCampaignItems": [
+      { "emoji": "🍖", "name": "마감임박", "tag": "정육식당", "daysLeft": "2일 남음" },
+      { "emoji": "☕", "name": "4일 남음", "tag": "카페", "daysLeft": "4일 남음" },
+      { "emoji": "💄", "name": "2일 남음", "tag": "뷰티", "daysLeft": "2일 남음" },
+      { "emoji": "🌿", "name": "콘텐츠", "tag": "스킨케어", "daysLeft": "7일 남음" }
+    ],
+    "mockupAnalyticsStats": [
+      { "icon": "📈", "value": "1만", "label": "총 도달" },
+      { "icon": "💰", "value": "10만원", "label": "총 금액" },
+      { "icon": "👤", "value": "+12%", "label": "유입" },
+      { "icon": "⭐", "value": "4.5", "label": "평균 평점" }
+    ],
+    "mockupAnalyticsInfluencer": {
+      "name": "지니",
+      "followers": "1.2만 팔로워",
+      "rate": "8.5%",
+      "rateLabel": "성과율"
+    }
   },
   "form": {
     "title": "지금 사전 예약하시면, 서비스 오픈 시 프리미엄 모집권(기업/대행사) / 우수 리뷰어 뱃지(개인)를 드립니다.",

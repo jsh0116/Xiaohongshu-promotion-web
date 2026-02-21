@@ -33,7 +33,27 @@
     "feat2Title": "沟通无障碍",
     "feat2Text": "不懂中文也没关系，提供实时翻译聊天和自动导购翻译",
     "feat3Title": "数据驱动匹配 & 报告",
-    "feat3Text": "提供防跑路信用评级，自动生成广告主报告"
+    "feat3Text": "提供防跑路信用评级，自动生成广告主报告",
+    "mockupCampaignTabs": ["活动", "博主", "数据"],
+    "mockupCampaignUpload": "发布活动",
+    "mockupCampaignItems": [
+      { "emoji": "🍖", "name": "即将截止", "tag": "烤肉店", "daysLeft": "剩2天" },
+      { "emoji": "☕", "name": "剩4天", "tag": "咖啡", "daysLeft": "剩4天" },
+      { "emoji": "💄", "name": "剩2天", "tag": "美妆", "daysLeft": "剩2天" },
+      { "emoji": "🌿", "name": "内容", "tag": "护肤", "daysLeft": "剩7天" }
+    ],
+    "mockupAnalyticsStats": [
+      { "icon": "📈", "value": "1万", "label": "总触达" },
+      { "icon": "💰", "value": "10万韩元", "label": "总金额" },
+      { "icon": "👤", "value": "+12%", "label": "引流" },
+      { "icon": "⭐", "value": "4.5", "label": "平均评分" }
+    ],
+    "mockupAnalyticsInfluencer": {
+      "name": "Jini",
+      "followers": "1.2万粉丝",
+      "rate": "8.5%",
+      "rateLabel": "成效率"
+    }
   },
   "form": {
     "title": "现在预约，上线时赠送「高级招募券」(企业/pr) / 「优质博主勋章」(个人)",

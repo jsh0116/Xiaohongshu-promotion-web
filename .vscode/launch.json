@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ai-tutor-web: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn ai-tutor-web dev"
+    },
+    {
+      "name": "academy-web: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn academy-web dev"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000/landing/english"
+    },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn dev",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}

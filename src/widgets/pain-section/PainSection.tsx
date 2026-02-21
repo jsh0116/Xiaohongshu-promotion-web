@@ -1,14 +1,20 @@
 import { getTranslations } from "next-intl/server";
+import { ScrollReveal } from "@shared/ui/ScrollReveal";
+
+const CARD_STAGGER_DELAY_S = 0.12;
 
 export async function PainSection() {
   const t = await getTranslations("pain");
 
   return (
-    <section className="py-16 sm:py-20 bg-zinc-50 dark:bg-zinc-900/50">
+    <section
+      data-testid="pain-section"
+      className="py-16 sm:py-20 bg-zinc-50 dark:bg-zinc-900/50"
+    >
       <div className="max-w-5xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Business card */}
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border border-zinc-100 dark:border-zinc-800 shadow-sm">
+          <ScrollReveal className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border border-zinc-100 dark:border-zinc-800 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center text-xl">
                 🏢
@@ -41,10 +47,13 @@ export async function PainSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Influencer card */}
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border border-zinc-100 dark:border-zinc-800 shadow-sm">
+          <ScrollReveal
+            delay={CARD_STAGGER_DELAY_S}
+            className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border border-zinc-100 dark:border-zinc-800 shadow-sm"
+          >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 bg-rose-100 dark:bg-rose-900/50 rounded-xl flex items-center justify-center text-xl">
                 ✨
@@ -77,7 +86,7 @@ export async function PainSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
