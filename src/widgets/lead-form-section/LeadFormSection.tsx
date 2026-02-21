@@ -44,7 +44,7 @@ export function LeadFormSection() {
             delay={FORM_CARD_DELAY_S}
             className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border border-zinc-100 dark:border-zinc-800 shadow-xl shadow-zinc-100/50 dark:shadow-none"
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-2 text-center">
+            <h2 className="text-base sm:text-xl font-bold text-zinc-900 dark:text-white mb-2 text-center break-keep">
               {t("title")}
             </h2>
             <div className="h-px bg-zinc-100 dark:bg-zinc-800 my-6" />

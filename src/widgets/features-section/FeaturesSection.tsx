@@ -214,7 +214,7 @@ export async function FeaturesSection() {
           <span className="inline-block text-xs font-semibold text-rose-500 uppercase tracking-widest mb-3">
             {t("title")}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white break-keep">
             {t("subtitle")}
           </h2>
         </ScrollReveal>
