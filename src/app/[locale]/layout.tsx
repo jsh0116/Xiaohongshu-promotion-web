@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { Geist, Geist_Mono } from "next/font/google";
-import ogImage from "@/assets/images/image.png";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { cookies } from "next/headers";
@@ -58,9 +57,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: ogImage.src,
-          width: ogImage.width,
-          height: ogImage.height,
+          url: "/og-image.png",
+          width: 500,
+          height: 500,
           alt: t("siteName"),
         },
       ],
