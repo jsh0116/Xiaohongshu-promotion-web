@@ -76,6 +76,16 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} className={initialTheme === "dark" ? "dark" : ""}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content={process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION}
+        />
+        <meta
+          name="naver-site-verification"
+          content={process.env.NAVER_SEARCH_CONSOLE_VERIFICATION}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white`}
       >
