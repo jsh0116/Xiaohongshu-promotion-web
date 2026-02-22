@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@shared/ui/Button";
@@ -15,6 +15,11 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   const options = [
     { key: "opt1", label: t("opt1") },
     { key: "opt2", label: t("opt2") },
@@ -24,6 +29,11 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
 
   const handleSubmit = () => {
     if (!selected) return;
+
+    // localStorage에 선택한 옵션 저장
+    localStorage.setItem("surveyResponse", selected);
+    console.log("[SurveyPopup] Survey response saved to localStorage:", selected);
+
     setSubmitted(true);
     setTimeout(onClose, 2000);
   };
@@ -48,7 +58,7 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", duration: 0.4 }}
-            className="fixed inset-x-4 bottom-8 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl p-6 z-50"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl p-6 z-50"
             data-testid="survey-popup"
           >
             {submitted ? (
