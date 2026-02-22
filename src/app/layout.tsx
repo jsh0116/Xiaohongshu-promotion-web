@@ -8,7 +8,7 @@ const GoogleAnalytics = dynamic(() =>
 );
 
 export default function RootLayout({ children }: PropsWithChildren<unknown>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const gaId = process.env.GA_MEASUREMENT_ID;
 
   return (
     <>
