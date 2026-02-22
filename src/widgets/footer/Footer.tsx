@@ -1,8 +1,10 @@
 import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 export async function Footer() {
   const t = await getTranslations("footer");
   const tCommon = await getTranslations("common");
+  const locale = await getLocale();
 
   return (
     <footer className="bg-zinc-950 dark:bg-black text-zinc-400 py-10">
@@ -23,7 +25,7 @@ export async function Footer() {
 
           <div className="flex items-center gap-4 text-xs">
             <a
-              href="#"
+              href={`/${locale}/privacy`}
               className="hover:text-white transition-colors"
             >
               {t("privacy")}
