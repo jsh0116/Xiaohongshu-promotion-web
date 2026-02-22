@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["googleapis", "google-auth-library"],
+  htmlLimitedBots: /.*/,
 };
 
 export default withNextIntl(nextConfig);

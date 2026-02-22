@@ -19,7 +19,7 @@ export function HeroSection() {
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         {/* Main headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight mb-6 break-keep"
