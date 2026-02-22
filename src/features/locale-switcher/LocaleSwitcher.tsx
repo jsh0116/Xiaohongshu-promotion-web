@@ -1,10 +1,11 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 
 export function LocaleSwitcher() {
   const locale = useLocale();
+  const t = useTranslations("common");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,7 +26,7 @@ export function LocaleSwitcher() {
         }`}
         data-testid="locale-ko"
       >
-        한국어
+        {t("koName")}
       </button>
       <span className="text-zinc-300 dark:text-zinc-600">|</span>
       <button
@@ -37,7 +38,7 @@ export function LocaleSwitcher() {
         }`}
         data-testid="locale-zh"
       >
-        中文
+        {t("zhName")}
       </button>
     </div>
   );

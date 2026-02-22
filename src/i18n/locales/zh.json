@@ -2,7 +2,12 @@
   "common": {
     "siteName": "Review Links",
     "darkMode": "深色模式",
-    "lightMode": "浅色模式"
+    "lightMode": "浅色模式",
+    "description": "小红书、抖音、大众点评体验团平台预约",
+    "ogDescription": "无语言障碍的小红书、抖音、大众点评营销",
+    "ogLocale": "zh_CN",
+    "koName": "한국어",
+    "zhName": "中文"
   },
   "header": {
     "earlyBird": "预约即享免费试用券"
@@ -37,7 +42,12 @@
     "mockupCampaignTabs": ["活动", "博主", "数据"],
     "mockupCampaignUpload": "发布活动",
     "mockupCampaignItems": [
-      { "emoji": "🍖", "name": "即将截止", "tag": "烤肉店", "daysLeft": "剩2天" },
+      {
+        "emoji": "🍖",
+        "name": "即将截止",
+        "tag": "烤肉店",
+        "daysLeft": "剩2天"
+      },
       { "emoji": "☕", "name": "剩4天", "tag": "咖啡", "daysLeft": "剩4天" },
       { "emoji": "💄", "name": "剩2天", "tag": "美妆", "daysLeft": "剩2天" },
       { "emoji": "🌿", "name": "内容", "tag": "护肤", "daysLeft": "剩7天" }
@@ -91,6 +101,7 @@
   },
   "privacyPolicy": {
     "title": "个人信息处理方针",
+    "metaDescription": "Review Links的个人信息处理方针。",
     "lastUpdated": "最后更新日期：2026年2月",
     "sections": [
       {
@@ -155,10 +166,7 @@
       {
         "heading": "个人信息保护负责人",
         "content": "",
-        "items": [
-          "姓名/职位：[负责人姓名] / [职位]",
-          "联系方式：[电子邮件及电话号码]"
-        ]
+        "items": ["姓名/职位：崔源真", "电子邮件 : dnjswlss0922@naver.com"]
       }
     ]
   }

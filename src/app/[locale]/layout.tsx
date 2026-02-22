@@ -37,14 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "common" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("siteName"),
       template: `%s | ${t("siteName")}`,
     },
-    description:
-      locale === "ko"
-        ? "샤오홍슈 마케팅 플랫폼 사전 예약"
-        : "小红书营销平台预约",
+    description: t("description"),
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
       languages: {
@@ -55,11 +53,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: t("siteName"),
-      description:
-        locale === "ko"
-          ? "언어 장벽 없이 시작하는 샤오홍슈 마케팅"
-          : "无语言障碍的小红书营销",
-      locale,
+      description: t("ogDescription"),
+      locale: t("ogLocale"),
       type: "website",
       images: [
         {

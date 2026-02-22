@@ -35,17 +35,12 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       formData.set("email", email);
       formData.set("userType", userType);
 
-      // localStorage에서 survey 응답 읽기
-      const surveyResponse = localStorage.getItem("surveyResponse");
-      if (surveyResponse) {
-        formData.set("surveyResponse", surveyResponse);
-      }
-
       const result = await submitLead(formData);
       if (result.ok) {
         setSubmitted(true);
-        // 성공 후 localStorage 정리
-        localStorage.removeItem("surveyResponse");
+        // SurveyPopup에서 survey 응답 전송 시 매칭용으로 저장
+        sessionStorage.setItem("leadEmail", email);
+        sessionStorage.setItem("leadUserType", userType);
         setTimeout(() => onSuccess(), 300);
       } else {
         setEmailError(t("emailError"));

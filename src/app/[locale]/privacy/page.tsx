@@ -4,13 +4,11 @@ import { SITE_URL } from "@shared/constants";
 
 export async function generateMetadata() {
   const t = await getTranslations("privacyPolicy");
+  const tCommon = await getTranslations("common");
   const locale = await getLocale();
 
   const title = t("title");
-  const description =
-    locale === "ko"
-      ? "샤오홍슈 체험단의 개인정보처리방침을 확인하세요."
-      : "小红书体验团的个人信息处理方针。";
+  const description = t("metaDescription");
 
   return {
     title,
@@ -20,7 +18,7 @@ export async function generateMetadata() {
       title,
       description,
       url: `${SITE_URL}/${locale}/privacy`,
-      locale: locale === "ko" ? "ko_KR" : "zh_CN",
+      locale: tCommon("ogLocale"),
       type: "website",
     },
   };

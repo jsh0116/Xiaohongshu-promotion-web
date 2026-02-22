@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@shared/ui/Button";
+import { submitSurvey } from "@shared/api/submitSurvey";
 
 interface SurveyPopupProps {
   open: boolean;
@@ -29,14 +30,24 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
     { key: "opt4", label: t("opt4") },
   ];
 
-  const handleSubmit = () => {
+  const saveAndClose = async (surveyResponse: string) => {
+    const email = sessionStorage.getItem("leadEmail") ?? "";
+    const userType = sessionStorage.getItem("leadUserType") ?? "-";
+    await submitSurvey(email, userType, surveyResponse);
+    sessionStorage.removeItem("leadEmail");
+    sessionStorage.removeItem("leadUserType");
+  };
+
+  const handleSubmit = async () => {
     if (!selected) return;
-
-    // localStorage에 선택한 옵션 저장
-    localStorage.setItem("surveyResponse", selected);
-
     setSubmitted(true);
+    await saveAndClose(selected);
     setTimeout(onClose, 2000);
+  };
+
+  const handleSkip = async () => {
+    await saveAndClose("-");
+    onClose();
   };
 
   return (
@@ -50,7 +61,7 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 z-40"
-            onClick={onClose}
+            onClick={handleSkip}
           />
           {/* Modal */}
           <motion.div
@@ -95,7 +106,7 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
                   <Button
                     variant="ghost"
                     size="md"
-                    onClick={onClose}
+                    onClick={handleSkip}
                     className="flex-1"
                     data-testid="survey-skip"
                   >

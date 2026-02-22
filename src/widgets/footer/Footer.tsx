@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { getLocale } from "next-intl/server";
 import Link from "next/link";
+import Image from "next/image";
+import logoImage from "@/assets/images/image.png";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -12,9 +14,13 @@ export async function Footer() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-rose-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">小</span>
-            </div>
+            <Image
+              src={logoImage}
+              alt="Review Links logo"
+              width={28}
+              height={28}
+              className="rounded-lg"
+            />
             <span className="text-white font-semibold text-sm">
               {tCommon("siteName")}
             </span>

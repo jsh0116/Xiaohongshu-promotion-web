@@ -2,7 +2,12 @@
   "common": {
     "siteName": "리뷰링스",
     "darkMode": "다크 모드",
-    "lightMode": "라이트 모드"
+    "lightMode": "라이트 모드",
+    "description": "샤오홍슈, 도우인, 다종디엔핑 체험단 플랫폼 사전 예약",
+    "ogDescription": "언어 장벽 없이 시작하는 샤오홍슈, 도우인, 다종디엔핑 마케팅",
+    "ogLocale": "ko_KR",
+    "koName": "한국어",
+    "zhName": "中文"
   },
   "header": {
     "earlyBird": "사전 예약 시 무료 이용권 제공"
@@ -37,10 +42,30 @@
     "mockupCampaignTabs": ["캠페인", "인플루언서", "분석"],
     "mockupCampaignUpload": "캠페인 올리기",
     "mockupCampaignItems": [
-      { "emoji": "🍖", "name": "마감임박", "tag": "정육식당", "daysLeft": "2일 남음" },
-      { "emoji": "☕", "name": "4일 남음", "tag": "카페", "daysLeft": "4일 남음" },
-      { "emoji": "💄", "name": "2일 남음", "tag": "뷰티", "daysLeft": "2일 남음" },
-      { "emoji": "🌿", "name": "콘텐츠", "tag": "스킨케어", "daysLeft": "7일 남음" }
+      {
+        "emoji": "🍖",
+        "name": "마감임박",
+        "tag": "정육식당",
+        "daysLeft": "2일 남음"
+      },
+      {
+        "emoji": "☕",
+        "name": "4일 남음",
+        "tag": "카페",
+        "daysLeft": "4일 남음"
+      },
+      {
+        "emoji": "💄",
+        "name": "2일 남음",
+        "tag": "뷰티",
+        "daysLeft": "2일 남음"
+      },
+      {
+        "emoji": "🌿",
+        "name": "콘텐츠",
+        "tag": "스킨케어",
+        "daysLeft": "7일 남음"
+      }
     ],
     "mockupAnalyticsStats": [
       { "icon": "📈", "value": "1만", "label": "총 도달" },
@@ -91,6 +116,7 @@
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",
+    "metaDescription": "리뷰링스의 개인정보처리방침을 확인하세요.",
     "lastUpdated": "최종 수정일: 2026년 2월",
     "sections": [
       {
@@ -156,10 +182,7 @@
       {
         "heading": "개인정보 보호책임자",
         "content": "",
-        "items": [
-          "성명/직위: [책임자 성명] / [직위]",
-          "연락처: [이메일 및 전화번호]"
-        ]
+        "items": ["성명/직위: 최원진", "이메일: dnjswlss0922@naver.com "]
       }
     ]
   }
