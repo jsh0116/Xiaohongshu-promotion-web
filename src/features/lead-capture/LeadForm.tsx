@@ -39,7 +39,6 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       const surveyResponse = localStorage.getItem("surveyResponse");
       if (surveyResponse) {
         formData.set("surveyResponse", surveyResponse);
-        console.log("[LeadForm] Survey response from localStorage:", surveyResponse);
       }
 
       const result = await submitLead(formData);
@@ -85,7 +84,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
                 "py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all break-keep",
                 userType === type
                   ? "border-rose-500 bg-rose-50 text-rose-600 dark:bg-rose-950 dark:text-rose-400"
-                  : "border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-600"
+                  : "border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-600",
               )}
               data-testid={`user-type-${type}`}
             >

@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { getLocale } from "next-intl/server";
+import Link from "next/link";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -19,17 +20,15 @@ export async function Footer() {
             </span>
           </div>
 
-          <p className="text-xs text-center sm:text-left">
-            {t("description")}
-          </p>
+          <p className="text-xs text-center sm:text-left">{t("description")}</p>
 
           <div className="flex items-center gap-4 text-xs">
-            <a
+            <Link
               href={`/${locale}/privacy`}
               className="hover:text-white transition-colors"
             >
               {t("privacy")}
-            </a>
+            </Link>
           </div>
         </div>
 

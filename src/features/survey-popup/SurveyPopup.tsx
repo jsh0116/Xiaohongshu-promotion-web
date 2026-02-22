@@ -17,7 +17,9 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   const options = [
@@ -32,7 +34,6 @@ export function SurveyPopup({ open, onClose }: SurveyPopupProps) {
 
     // localStorage에 선택한 옵션 저장
     localStorage.setItem("surveyResponse", selected);
-    console.log("[SurveyPopup] Survey response saved to localStorage:", selected);
 
     setSubmitted(true);
     setTimeout(onClose, 2000);

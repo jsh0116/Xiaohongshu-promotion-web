@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "小红书体验团",
+    "siteName": "Review Links",
     "darkMode": "深色模式",
     "lightMode": "浅色模式"
   },
@@ -8,17 +8,17 @@
     "earlyBird": "预约即享免费试用券"
   },
   "hero": {
-    "mainLine1": "小红书推广，",
+    "mainLine1": "小红书、抖音、大众点评体验团，",
     "mainLine2": "现在就是这么简单",
     "subLine1": "企业、pr都能无语言障碍招募，",
     "subLine2": "博主一键免费体验",
-    "cta": "立即预约并领取免费试用券",
+    "cta": "立即申请预约",
     "counterLabel": "人已提前预约"
   },
   "pain": {
     "bizTitle": "企业及营销人员",
     "bizText": "繁琐的微信沟通，手动做报告... 很烦恼吧？",
-    "bizSol": "无需中介直接招募，获取AI自动生成的数据分析报告",
+    "bizSol": "无需中介直接招募，博主亲自上传认证，100%真实有效的数据看板",
     "infTitle": "小红书博主(KOC/KOL)",
     "infText": "想接推广却不知道渠道，粉丝不多而犹豫？",
     "infSol": "只要有小红书账号就行！免费体验您感兴趣的推广活动",
@@ -85,9 +85,9 @@
     "t3": "博主박○○刚刚申请了"
   },
   "footer": {
-    "rights": "© 2026 小红书体验团. All rights reserved.",
+    "rights": "© Review Links. All rights reserved.",
     "privacy": "隐私政策",
-    "description": "小红书营销，无语言障碍轻松开始。"
+    "description": "网站目前处于公测阶段，暂不提供实际的商业交易与服务"
   },
   "privacyPolicy": {
     "title": "个人信息处理方针",

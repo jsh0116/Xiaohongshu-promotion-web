@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { AnimatedCounter } from "@features/counter/AnimatedCounter";
+import Link from "next/link";
 
 export function HeroSection() {
   const t = useTranslations("hero");
@@ -16,7 +17,6 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 text-center">
-
         {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -37,9 +37,7 @@ export function HeroSection() {
           className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8 leading-relaxed break-keep"
         >
           {t("subLine1")}
-          <br className="hidden sm:block" />
-          {" "}
-          {t("subLine2")}
+          <br className="hidden sm:block" /> {t("subLine2")}
         </motion.p>
 
         {/* CTA Button */}
@@ -49,7 +47,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-8"
         >
-          <a
+          <Link
             href="#lead-form"
             className="inline-flex items-center gap-2 bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-xl shadow-lg shadow-rose-500/30 transition-all hover:shadow-rose-500/40 hover:-translate-y-0.5"
           >
@@ -67,7 +65,7 @@ export function HeroSection() {
                 d="M13 7l5 5m0 0l-5 5m5-5H6"
               />
             </svg>
-          </a>
+          </Link>
         </motion.div>
 
         {/* Social counter */}

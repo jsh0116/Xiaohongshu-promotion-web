@@ -4,7 +4,7 @@ import type { ActionResult } from "@shared/types";
 import { isValidEmail } from "@entities/lead";
 
 export async function submitLead(
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResult<void>> {
   const email = (formData.get("email") as string)?.trim();
   const userType = formData.get("userType") as string;
@@ -37,13 +37,6 @@ export async function submitLead(
         surveyResponse || "-",
       ];
 
-      console.log("[submitLead] Saving to Google Sheets:", {
-        timestamp: rowData[0],
-        email: rowData[1],
-        userType: rowData[2],
-        surveyResponse: rowData[3],
-      });
-
       await sheets.spreadsheets.values.append({
         spreadsheetId: sheetId,
         range: "Sheet1",
@@ -52,14 +45,10 @@ export async function submitLead(
           values: [rowData],
         },
       });
-
-      console.log("[submitLead] Successfully saved to Google Sheets");
     } catch (err) {
-      console.error("[submitLead] Sheets error:", err);
       // Graceful fallback — treat as success so UX isn't broken
     }
   } else {
-    console.log("[submitLead] Google Sheets credentials not configured");
   }
 
   return { ok: true };
