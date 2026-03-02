@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: t("siteName"),
+      default: t("metaTitle"),
       template: `%s | ${t("siteName")}`,
     },
     description: t("description"),
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: t("siteName"),
+      title: t("metaTitle"),
       description: t("ogDescription"),
       locale: t("ogLocale"),
       siteName: t("siteName"),
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: t("siteName"),
+      title: t("metaTitle"),
       description: t("ogDescription"),
       images: [`/og-image.png`],
     },
